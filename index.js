@@ -24,7 +24,10 @@ client.on('interactionCreate', async interaction => {
     return interaction.reply('Pong!');
   }
   if (interaction.commandName === "invite") {
-    return interaction.reply(`Here is my invite link: ${process.env.OAUTH2_URL}`)
+    return interaction.reply({ 
+      content: `Here is my invite link: ${process.env.OAUTH2_URL}`,
+      ephemeral: true
+    })
   }
 });
 

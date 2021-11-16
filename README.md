@@ -1,6 +1,7 @@
 # Fluffy Polar Bears Bot
 
 Just a bot that replies in the chat with random ice / bear related puns whenever someone types `!ice`.
+You can use the one that I'm hosting myself by using [this invite link](https://discord.com/api/oauth2/authorize?client_id=910067956640268290&permissions=517543938112&scope=bot%20applications.commands) or by obtaining it using the `/invite` slash command in a server that has the bot.
 
 # Self Hosting
 

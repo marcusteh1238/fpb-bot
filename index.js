@@ -2,6 +2,7 @@ require("dotenv-safe").config();
 const { Client, Intents } = require("discord.js");
 
 const replyMsgWithIce = require("./src/replyMsgWithIce");
+const refreshApplicationCommands = require("./src/refreshApplicationCommands");
 
 const client = new Client({ 
   intents: [
@@ -17,16 +18,19 @@ client.on('ready', () => {
 });
 
 client.on('interactionCreate', async interaction => {
-
   if (!interaction.isCommand()) return;
 
   if (interaction.commandName === 'ping') {
-    await interaction.reply('Pong!');
+    return interaction.reply('Pong!');
+  }
+  if (interaction.commandName === "invite") {
+    return interaction.reply(`Here is my invite link: ${process.env.OAUTH2_URL}`)
   }
 });
 
-client.on('messageCreate', (message) => {
-  replyMsgWithIce(message);
+client.on('messageCreate', async (message) => {
+  refreshApplicationCommands(message.guildId);
+  await replyMsgWithIce(message);
 })
 
 client.login(process.env.BOT_TOKEN);

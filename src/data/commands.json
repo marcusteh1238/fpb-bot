@@ -1,4 +1,10 @@
-[{
-  "name": "ping",
-  "description": "Replies with Pong!"
-}]
+[
+  {
+    "name": "ping",
+    "description": "Replies with Pong!"
+  },
+  {
+    "name": "invite",
+    "description": "Sends you the invite link for the bot!"
+  }
+]

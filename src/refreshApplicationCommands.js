@@ -20,12 +20,12 @@ async function refreshApplicationCommands(guildId) {
       return;
     }
     await setLastRegisteredSlashCommandTime(guildId);
-    console.log('Started refreshing application (/) commands.');
+    // console.log('Started refreshing application (/) commands.');
     await rest.put(
       Routes.applicationGuildCommands(CLIENT_ID, guildId),
       { body: commands },
     );
-    console.log('Successfully reloaded application (/) commands.');
+    // console.log('Successfully reloaded application (/) commands.');
   } catch (error) {
     console.error(error);
   }

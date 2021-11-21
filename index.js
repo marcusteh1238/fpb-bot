@@ -1,8 +1,9 @@
 require("dotenv-safe").config();
 const { Client, Intents } = require("discord.js");
 
-const replyMsgWithIce = require("./src/replyMsgWithIce");
 const refreshApplicationCommands = require("./src/refreshApplicationCommands");
+const replyMsgWithIce = require("./src/replyMsgWithIce");
+const replyMsgWithFloor = require("./src/replyMsgWithFloor");
 
 const client = new Client({ 
   intents: [
@@ -34,6 +35,7 @@ client.on('interactionCreate', async interaction => {
 client.on('messageCreate', async (message) => {
   refreshApplicationCommands(message.guildId);
   await replyMsgWithIce(message);
+  await replyMsgWithFloor(message);
 })
 
 client.login(process.env.BOT_TOKEN);

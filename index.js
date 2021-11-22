@@ -6,6 +6,9 @@ const replyMsgWithIce = require("./src/replyMsgWithIce");
 const replyMsgWithFloor = require("./src/replyMsgWithFloor");
 const replyMsgWithBand = require("./src/replyMsgWithBand");
 
+process.on("uncaughtException", err => console.error(err));
+process.on("unhandledRejection", err => console.error(err));
+
 const client = new Client({ 
   intents: [
     Intents.FLAGS.GUILD_MESSAGES, 

@@ -36,6 +36,7 @@ client.on('messageCreate', async (message) => {
   refreshApplicationCommands(message.guildId);
   await replyMsgWithIce(message);
   await replyMsgWithFloor(message);
+  await replyMsgWithBand(message);
 })
 
 client.login(process.env.BOT_TOKEN);

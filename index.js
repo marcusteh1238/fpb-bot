@@ -4,6 +4,7 @@ const { Client, Intents } = require("discord.js");
 const refreshApplicationCommands = require("./src/refreshApplicationCommands");
 const replyMsgWithIce = require("./src/replyMsgWithIce");
 const replyMsgWithFloor = require("./src/replyMsgWithFloor");
+const replyMsgWithBand = require("./src/replyMsgWithBand");
 
 const client = new Client({ 
   intents: [

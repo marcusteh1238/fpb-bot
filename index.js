@@ -5,6 +5,7 @@ const refreshApplicationCommands = require("./src/refreshApplicationCommands");
 const replyMsgWithIce = require("./src/replyMsgWithIce");
 const replyMsgWithFloor = require("./src/replyMsgWithFloor");
 const replyMsgWithBand = require("./src/replyMsgWithBand");
+const replyMsgWithBasket = require("./src/replyMsgWithBasket");
 
 process.on("uncaughtException", err => console.error(err));
 process.on("unhandledRejection", err => console.error(err));
@@ -41,6 +42,7 @@ client.on('messageCreate', async (message) => {
   await replyMsgWithIce(message);
   await replyMsgWithFloor(message);
   await replyMsgWithBand(message);
+  await replyMsgWithBasket(message);
 })
 
 client.login(process.env.BOT_TOKEN);

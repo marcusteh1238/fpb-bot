@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const { Message } = require("discord.js");
 const path = require("path");
-const bandGif = fs.readFileSync(path.resolve(__dirname, "./data/files/lucky.gif"));
+const bandGif = fs.readFileSync(path.resolve(__dirname, "./data/files/basket.gif"));
 
 /**
  * 
@@ -10,10 +10,10 @@ const bandGif = fs.readFileSync(path.resolve(__dirname, "./data/files/lucky.gif"
  * @returns 
  */
 async function replyMsgWithBand(message) {
-  if (!message.content || !message.content.startsWith('!band')) return;
+  if (!message.content || !message.content.startsWith('!basket')) return;
   message.reply({
     files: [
-      {attachment: bandGif, name: "band.gif"}
+      {attachment: bandGif, name: "basket.gif"}
     ]
   });
 }

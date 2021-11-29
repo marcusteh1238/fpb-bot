@@ -6,9 +6,19 @@ const replyMsgWithIce = require("./src/replyMsgWithIce");
 const replyMsgWithFloor = require("./src/replyMsgWithFloor");
 const replyMsgWithBand = require("./src/replyMsgWithBand");
 const replyMsgWithBasket = require("./src/replyMsgWithBasket");
+const replyMsgWithPaperhand = require("./src/replyMsgWithPaperhand");
 
 process.on("uncaughtException", err => console.error(err));
 process.on("unhandledRejection", err => console.error(err));
+
+const commands = {
+  ice: replyMsgWithIce,
+  floor: replyMsgWithFloor,
+  band: replyMsgWithBand,
+  basket: replyMsgWithBasket,
+  paperhand: replyMsgWithPaperhand,
+  paperhands: replyMsgWithPaperhand
+}
 
 const client = new Client({ 
   intents: [
@@ -39,10 +49,14 @@ client.on('interactionCreate', async interaction => {
 
 client.on('messageCreate', async (message) => {
   refreshApplicationCommands(message.guildId);
-  await replyMsgWithIce(message);
-  await replyMsgWithFloor(message);
-  await replyMsgWithBand(message);
-  await replyMsgWithBasket(message);
+  if (message.content) {
+    const args = message.content.split(' ');
+    if (args.length > 0 && args[0].startsWith('!')) {
+      const cmdWord = args[0].replace('!', '');
+      const command = commands[cmdWord];
+      if (command) return command(message);
+    }
+  }
 })
 
 client.login(process.env.BOT_TOKEN);

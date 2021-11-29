@@ -8,7 +8,6 @@ const replies = require("./data/iceReplies.json");
  * @returns 
  */
 async function replyMsgWithIce(message) {
-  if (!message.content || !message.content.startsWith('!ice')) return;
   message.react('🧊');
   const idx = Math.floor(Math.random() * replies.length);
   message.reply(replies[idx]);

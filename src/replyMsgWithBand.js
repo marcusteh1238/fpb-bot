@@ -10,7 +10,6 @@ const bandGif = fs.readFileSync(path.resolve(__dirname, "./data/files/lucky.gif"
  * @returns 
  */
 async function replyMsgWithBand(message) {
-  if (!message.content || !message.content.startsWith('!band')) return;
   message.reply({
     files: [
       {attachment: bandGif, name: "band.gif"}
